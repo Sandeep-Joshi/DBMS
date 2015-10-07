@@ -1,0 +1,22 @@
+3
+cust
+prod
+year
+Z_avg_month
+avg_quant
+X_avg_quant
+Y_avg_quant
+q
+
+cust
+prod
+year
+q
+avg_quant
+X_avg_quant
+Z_avg_month
+Y_avg_quant
+q
+state = 'NJ' and ((year >= 1990) and (year <= 1995)) and avg_quant > quant
+state = 'NY' and X_avg_quant > quant
+state = 'CT' and ((year >= 1990) and (year <= 1995)) and Y_avg_quant > X_avg_quant

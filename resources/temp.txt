@@ -1,0 +1,23 @@
+	// check if the key exists if not then create a new MFStructure and return it.
+	public MFStructure generateContent(String gvKey, String aggFunc, RecordKey key, ResultSet rs) throws SQLException {
+		MFStructure tempVal;
+		if(recordDetails.containsKey(key))
+			tempVal = recordDetails.get(key);
+		else
+			tempVal = new MFStructure();
+		switch(gvKey + "_" + aggFunc ) {
+			case("0_avg"): 
+				tempVal.avg(rs);
+			break;
+			case("X_avg"): 
+				tempVal.X_avg(rs);
+			break;
+			case("Y_avg"): 
+				tempVal.Y_avg(rs);
+			break;
+			case("Z_avg"): 
+				tempVal.Z_avg(rs);
+			break;
+		}
+		return tempVal;
+	}

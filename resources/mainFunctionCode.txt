@@ -1,0 +1,36 @@
+	public QueryProgram() {
+		recordDetails = new HashMap<RecordKey, MFStructure>();
+	}
+
+	public static void main(String[] args)	{
+		try {
+			Class.forName("org.postgresql.Driver");
+			System.out.println("Success loading Driver!");
+		} catch(Exception e) {
+			System.out.println("Fail loading Driver!");
+			e.printStackTrace();
+		}
+			
+		QueryProgram sales = new QueryProgram();
+
+	// Parse the arguments passed from command line interface
+			
+		if (args.length == 1) {
+			sales.TBLNAME = args[1];
+		} else if(args.length == 2) {
+			sales.TBLNAME = args[0];
+			String[] tempArray = args[1].split("@");
+			sales.USR = tempArray[0];
+			sales.URL = "jdbc:postgresql://" + tempArray[1];
+			Console c = System.console();
+			if(c == null) {
+				System.err.println("No console.");
+				System.exit(1);
+			}
+			char[] pass = c.readPassword("Enter password: ");
+			sales.PWD = new String(pass);
+		}
+		
+		sales.fetchData();	
+		sales.generateReport();		
+	}

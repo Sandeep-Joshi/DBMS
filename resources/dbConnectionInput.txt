@@ -1,0 +1,4 @@
+postgres
+cs561dbms
+jdbc:postgresql://localhost:5432/CS561
+sales
